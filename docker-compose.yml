@@ -4,8 +4,3 @@ services:
         build:
             context: .
         tty: true
-        volumes:
-            - "./ansible:/ansible"
-        working_dir: /ansible
-        environment:
-            PATH: "/usr/local/share/ansible-virtualenv/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

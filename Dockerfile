@@ -17,4 +17,11 @@ RUN apk update && \
     apk del python3-dev && \
     apk del musl-dev && \
     apk del libffi-dev && \
-    apk del openssl-dev
+    apk del openssl-dev && \
+    mkdir -p /srv/ansible
+
+WORKDIR /srv/ansible
+
+ENV PATH=/usr/local/share/ansible-virtualenv/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+VOLUME [ "/srv/ansible" ]
