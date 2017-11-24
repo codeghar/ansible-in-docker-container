@@ -8,7 +8,7 @@ RUN apk update && \
             python3=3.6.1-r3 &&\
     ln -s /usr/bin/python3 /usr/bin/python &&\
     ln -s /usr/bin/pip3 /usr/bin/pip &&\
-	apk add --virtual=build \
+    apk add --virtual=build \
             gcc \
             libffi-dev \
             make \
