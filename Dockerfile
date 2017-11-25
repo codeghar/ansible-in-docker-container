@@ -2,8 +2,9 @@ FROM alpine:3.6
 
 LABEL maintainer "https://github.com/aikchar/ansible-in-docker-container"
 
+# TODO: add comments within RUN step with echo command
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" > /etc/apk/repositories &&\
-    apk update && \
+    apk update &&\
     apk add --no-cache \
             ca-certificates \
             python3=3.6.3-r9 &&\
@@ -17,10 +18,12 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" > /etc/apk/repositorie
             openssh-client \
             openssl-dev \
             python3-dev=3.6.3-r9 &&\
-    pip install --no-cache-dir --disable-pip-version-check ansible==2.4.1.0 && \
+    pip install --no-cache-dir --disable-pip-version-check ansible==2.4.1.0 &&\
     apk del --purge build &&\
-    mkdir -p /srv/ansible && \
+    mkdir -p /srv/ansible &&\
     mkdir -p /root/.ssh
+    # The following command cuts image size by 40 MB
+    # find . -type f -name "*.py[co]" -delete -or -type d -name "__pycache__" -delete
 
 WORKDIR /srv/ansible
 
